@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real hasta la muerte</title>
+    <link rel="stylesheet" href="results.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="main">
+
+        <img id="logo" src="img/logo.png" />
+        <input type="text" id="xtsearch" />
+        <hr />
+
+        <div id="results">
+            <span class="totalResults"> Pagina 1 de aproximandamente nos que monda </span>
+            <div id="links">
+                <div class="result">
+                    <h3>Titulo de esta monda tu maldita madre</h3>
+                    <span>
+                        Este es que cule parrafo taluo de descripcion que como buen marica me estoy tomando el tiempo de
+                        redactar yo mismo en vez de coger uno por ahi
+                        y hacer lo que deberia hacer todo el mundo que es copiar y pegar el puto texto, bueno asi no es
+                        pero que hpta, asi si es.
+                        tu maldita madre ya a la tuya con desefrolito
+                    </span>
+                </div>
+                <div class="result">
+                    <h3>Titulo de esta monda tu maldita madre</h3>
+                    <span>
+                        Este es que cule parrafo taluo de descripcion que como buen marica me estoy tomando el tiempo de
+                        redactar yo mismo en vez de coger uno por ahi
+                        y hacer lo que deberia hacer todo el mundo que es copiar y pegar el puto texto, bueno asi no es
+                        pero que hpta, asi si es.
+                        tu maldita madre ya a la tuya con desefrolito
+                    </span>
+                </div>
+                <div class="result">
+                    <h3>Titulo de esta monda tu maldita madre</h3>
+                    <span>
+                        Este es que cule parrafo taluo de descripcion que como buen marica me estoy tomando el tiempo de
+                        redactar yo mismo en vez de coger uno por ahi
+                        y hacer lo que deberia hacer todo el mundo que es copiar y pegar el puto texto, bueno asi no es
+                        pero que hpta, asi si es.
+                        tu maldita madre ya a la tuya con desefrolito
+                    </span>
+                </div>
+                <div class="result">
+                    <h3>Titulo de esta monda tu maldita madre</h3>
+                    <span>
+                        Este es que cule parrafo taluo de descripcion que como buen marica me estoy tomando el tiempo de
+                        redactar yo mismo en vez de coger uno por ahi
+                        y hacer lo que deberia hacer todo el mundo que es copiar y pegar el puto texto, bueno asi no es
+                        pero que hpta, asi si es.
+                        tu maldita madre ya a la tuya con desefrolito
+                    </span>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <script>
+        let aux = document.location.href.split('?query=');
+        let query = aux[1];
+        document.getElementById('xtsearch').value = query;
+        fetch('http://localhost:8080/api/search?query=' + query).then(response => response.json()).then(json => {
+            console.log(json)
+            let html = '';
+            for (let resutlSearch of json) {
+                html += getHtmlResultSearch(resutlSearch);
+            }
+            document.getElementById("links").outerHTML = html;
+        });
+
+        function getHtmlResultSearch(resultSearch) {
+            return `<div class="result">
+                <h3><a href="${resultSearch.url}" target="_blank">${resultSearch.title}</a></h3>
+                <span>
+                    ${resultSearch.description}
+                </span>
+            </div>`;
+        }
+    </script>
+
+</body>
+
+</html>

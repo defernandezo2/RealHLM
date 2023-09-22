@@ -1,0 +1,23 @@
+#logo{
+    width: 300px;
+}
+
+#main{
+    width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
+
+input{
+    width: 100%;
+    margin: 20px 0px;
+    height: 33px;
+    border-radius: 25px;
+    border-color: #ccc;
+    padding-left: 15px; 
+}
+
+button{
+    padding: 7px 15px;
+} 
